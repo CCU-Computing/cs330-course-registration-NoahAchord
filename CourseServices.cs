@@ -69,6 +69,23 @@ namespace cs330_proj1
         /* As a student I want to see all course offerings by semester and department so that I can 
         choose major courses to register for */
 
+        public List<CourseOffering> getCourseOfferingsBySemesterAndDept(String semester, String department)
+         {
+            List<CourseOffering> correctCourses = new List<CourseOffering>();
+            
+            foreach(CourseOffering course in repo.Offerings)
+            {
+               string courseDepartment = course.TheCourse.Name.Split(" ")[0];
+
+               if (course.Semester.Equals(semester) && courseDepartment.Equals(department))
+               {
+                  correctCourses.Add(course);
+               }
+            }
+
+            return correctCourses;
+         }
+
         /* As a student I want to see all courses that meet a core goal, so that I can plan out
            my courses over the next few semesters and choose core courses that make sense for me */
 
