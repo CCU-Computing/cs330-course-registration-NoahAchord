@@ -5,7 +5,14 @@ namespace cs330_proj1
 {
     public class CourseServices
     {
-        private CourseRepository repo = new CourseRepository();
+        //private CourseRepository repo = new CourseRepository();
+
+        private readonly ICourseRepository _repo;
+
+        public CourseServices(ICourseRepository courseRepo)
+        {
+            _repo = courseRepo;
+        }
 
 
         //As a student, I want to search for course offerings that meet core goals 
@@ -13,8 +20,8 @@ namespace cs330_proj1
          public List<CourseOffering> getOfferingsByGoalIdAndSemester(String theGoalId, String semester) {
           //finish this method during the tutorial 
           //use the repo to get the data from the database (data store)
-         List<CoreGoal> theGoals = repo.Goals;
-         List<CourseOffering> theOfferings = repo.Offerings;
+         List<CoreGoal> theGoals = _repo.Goals;
+         List<CourseOffering> theOfferings = _repo.Offerings;
             
          //Complete any other required functionality/business logic to satisfy the requirement
          CoreGoal theGoal=null;
@@ -46,7 +53,7 @@ namespace cs330_proj1
 
          public List<Course> getCourses()
          {
-            return repo.Courses;
+            return _repo.Courses;
          }
 
 
@@ -56,7 +63,7 @@ namespace cs330_proj1
          {
             List<CourseOffering> correctSemesters = new List<CourseOffering>();
 
-            foreach (CourseOffering course in repo.Offerings)
+            foreach (CourseOffering course in _repo.Offerings)
             {
                if (course.Semester.Equals(semester))
                {
@@ -73,7 +80,7 @@ namespace cs330_proj1
          {
             List<CourseOffering> correctCourses = new List<CourseOffering>();
             
-            foreach(CourseOffering course in repo.Offerings)
+            foreach(CourseOffering course in _repo.Offerings)
             {
                string courseDepartment = course.TheCourse.Name.Split(" ")[0];
 
