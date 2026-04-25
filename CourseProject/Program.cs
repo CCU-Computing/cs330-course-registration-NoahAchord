@@ -10,10 +10,11 @@ namespace cs330courses
         {
             Console.WriteLine("Hello World!");
             Console.WriteLine("My name is Noah");
-            CourseServices service = new CourseServices();
+            ICourseRepository repo = new CourseRepository();
+            CourseServices service = new CourseServices(repo);
 
             Console.WriteLine("---------");
-            List<CourseOffering> theList = service.getOfferingsByGoalIdAndSemester("CG2","Spring 2021");
+            List<CourseOffering> theList = service.GetOfferingsByGoalIdAndSemester("CG2","Spring 2021");
             foreach(CourseOffering c in theList) {
                 Console.WriteLine(c);
             }
@@ -22,20 +23,20 @@ namespace cs330courses
             
             // Make each of the next 6 sections of code work
             
-            List<Course> theList2 = service.getCourses();
+            List<Course> theList2 = service.GetCourses();
             foreach(Course c in theList2) {
                 Console.WriteLine(c);
             }
             Console.WriteLine("---------");
             
-            List<CourseOffering> theList3 = service.getCourseOfferingsBySemester("Fall 2020");
+            List<CourseOffering> theList3 = service.GetCourseOfferingsBySemester("Fall 2020");
             foreach(CourseOffering c in theList3) {
                 Console.WriteLine(c);
             }
             Console.WriteLine("---------");
 
             
-            List<CourseOffering> theList4 = service.getCourseOfferingsBySemesterAndDept("Fall 2020","CSCI");
+            List<CourseOffering> theList4 = service.GetCourseOfferingsBySemesterAndDept("Fall 2020","CSCI");
             foreach(CourseOffering c in theList4) {
                 Console.WriteLine(c);
             }

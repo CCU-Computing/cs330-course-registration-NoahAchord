@@ -17,7 +17,7 @@ namespace cs330_proj1
 
         //As a student, I want to search for course offerings that meet core goals 
         // so that I can register easily for courses that meet my program requirements
-         public List<CourseOffering> getOfferingsByGoalIdAndSemester(String theGoalId, String semester) {
+         public List<CourseOffering> GetOfferingsByGoalIdAndSemester(String theGoalId, String semester) {
           //finish this method during the tutorial 
           //use the repo to get the data from the database (data store)
          List<CoreGoal> theGoals = _repo.Goals;
@@ -51,7 +51,7 @@ namespace cs330_proj1
 
         /* As a student, I want to see all available courses so that I know what my options are */
 
-         public List<Course> getCourses()
+         public List<Course> GetCourses()
          {
             return _repo.Courses;
          }
@@ -59,7 +59,7 @@ namespace cs330_proj1
 
         /* As a student, I want to see all course offerings by semester, so that I can choose from what's
            available to register for next semester */
-         public List<CourseOffering> getCourseOfferingsBySemester(String semester)
+         public List<CourseOffering> GetCourseOfferingsBySemester(String semester)
          {
             List<CourseOffering> correctSemesters = new List<CourseOffering>();
 
@@ -76,7 +76,7 @@ namespace cs330_proj1
         /* As a student I want to see all course offerings by semester and department so that I can 
         choose major courses to register for */
 
-        public List<CourseOffering> getCourseOfferingsBySemesterAndDept(String semester, String department)
+        public List<CourseOffering> GetCourseOfferingsBySemesterAndDept(String semester, String department)
          {
             List<CourseOffering> correctCourses = new List<CourseOffering>();
             
